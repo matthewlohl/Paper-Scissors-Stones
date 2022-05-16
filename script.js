@@ -20,9 +20,25 @@ function playerChoice(){
     console.log(playerSelection);
 }
 
-playerScore = 0;
-computerScore = 0;
-round =0;
+const resultArea = document.querySelector('.resultArea  ')
+
+
+//create array to log round result
+let resultsArray = [];
+let resultsLog = document.createElement('ul');
+resultsLog.classList.add('round-result');
+resultArea.insertAdjacentElement('beforeend', resultsLog);
+
+//log every result in a list
+function gameLog(){
+    var li = document.createElement('li');
+    li.textContent = resultsArray[`${resultsArray.length -1}`];
+    resultsLog.insertAdjacentElement('afterbegin', li);
+}
+
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
 
 //compare Computer and Player result
 //store and add score
@@ -33,17 +49,21 @@ function whoWin(){
     (playerSelection === 'scissors' && computerSelection === 'paper')){
         console.log("Player Wins!");
         playerScore++;
+        resultsArray.push(`You win round ${round}, Player: ${playerSelection}, Computer: ${computerSelection}. Score: ${playerScore}-${computerScore}`);
     }
     else if ((playerSelection === 'rock' && computerSelection === 'paper') ||
     (playerSelection === 'paper' && computerSelection === 'scissors') ||
     (playerSelection === 'scissors' && computerSelection === 'rock')){
         console.log("Computer Wins :(");
         computerScore++;
+        resultsArray.push(`Computer win round ${round}, Player: ${playerSelection}, Computer: ${computerSelection}. Score: ${playerScore}-${computerScore}`);
     }
     else {
         console.log("Tie");
+        resultsArray.push(`Tie in round ${round}. Score: ${playerScore}-${computerScore}`)
     }
-    console.log(`Round: ${round}`, `Player: ${playerSelection}`, `Computer: ${computerSelection}`);
+    console.log(resultsArray);
+    gameLog();
 }
 
 //calcualte total score
@@ -69,3 +89,6 @@ function playRound(){
         totalScore();
     }
 }
+
+
+

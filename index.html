@@ -2,11 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Paper Scissors Stone</title>
+        <title>Rock Paper Scissors</title>
     </head>
     <body>
-        <input id="playerChoice">Input 'Rock' 'Paper' 'Scissors' to play: </input>
-        <button id="submit" onclick="playRound()">Submit</button>
+        <h1 class="heading">Rock Paper Scissors</h1>
+        <div>
+            <input id="playerChoice">Input 'Rock' 'Paper' 'Scissors' to play: </input>
+            <button id="submit" onclick="playRound()">Submit</button>
+        </div>
+<!--log round result-->
+        <p>Results</p>
+        <div class="resultArea">
+            <ul class="round-result">        
+            </ul>
+        </div>
+
         <script src="script.js"></script>
     </body>
 
