@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+
 //computer random generate R/P/S
 function computerPlay(){
     //randomly select a num between 1-3
@@ -14,20 +18,42 @@ function computerPlay(){
 }
 
 
-//convert player input to lower case
-function playerChoice(){
-    playerSelection = document.getElementById("playerChoice").value.toLowerCase();
+
+//get ROCK choice from player
+const btn1 = document.getElementById("rock");
+btn1.addEventListener("click", playerSelectionRock);
+btn1.addEventListener("click", playRound);
+function playerSelectionRock(){
+    playerSelection = document.getElementById("rock").textContent.toLowerCase();
+    console.log(playerSelection);
+}
+//get PAPER choice from player
+const btn2 = document.getElementById("paper");
+btn2.addEventListener("click",playerSelectionPaper);
+btn2.addEventListener("click", playRound);
+function playerSelectionPaper(){
+    playerSelection = document.getElementById("paper").textContent.toLowerCase();
+    console.log(playerSelection);
+}
+//get SCISSORS choice from player
+const btn3 = document.getElementById("scissors");
+btn3.addEventListener("click",playerSelectionScissors);
+btn3.addEventListener("click", playRound);
+function playerSelectionScissors(){
+    playerSelection = document.getElementById("scissors").textContent.toLowerCase();
     console.log(playerSelection);
 }
 
-const resultArea = document.querySelector('.resultArea  ')
+
+//create variable to 
+const resultArea = document.querySelector('.resultArea')
 
 
 //create array to log round result
 let resultsArray = [];
 let resultsLog = document.createElement('ul');
 resultsLog.classList.add('round-result');
-resultArea.insertAdjacentElement('beforeend', resultsLog);
+resultArea.insertAdjacentElement('afterbegin', resultsLog);
 
 //log every result in a list
 function gameLog(){
@@ -36,14 +62,11 @@ function gameLog(){
     resultsLog.insertAdjacentElement('afterbegin', li);
 }
 
-let playerScore = 0;
-let computerScore = 0;
-let round = 0;
 
 //compare Computer and Player result
 //store and add score
 function whoWin(){
-    round++;
+    //round++;
     if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
     (playerSelection === 'scissors' && computerSelection === 'paper')){
@@ -67,7 +90,7 @@ function whoWin(){
 }
 
 //calcualte total score
-function totalScore(){
+/*function totalScore(){
     console.log(playerScore, computerScore);
     if (playerScore>computerScore){
         console.log("Player Wins");
@@ -78,16 +101,14 @@ function totalScore(){
     else if (playerScore==computerScore){
         console.log("Tie");
     }
-}
+}*/
 
 //start each round
 function playRound(){
     computerPlay();
-    playerChoice();
+    //playerChoice();
     whoWin();
-    if (round==5){
-        totalScore();
-    }
+    totalScore();
 }
 
 
