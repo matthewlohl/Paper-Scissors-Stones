@@ -58,7 +58,7 @@ resultArea.insertAdjacentElement('afterbegin', resultsLog);
 //log every result in a list
 function gameLog(){
     var li = document.createElement('li');
-    li.textContent = resultsArray[`${resultsArray.length -1}`];
+    li.textContent = resultsArray[`${resultsArray.length-1}`];
     resultsLog.insertAdjacentElement('afterbegin', li);
 }
 
@@ -66,7 +66,7 @@ function gameLog(){
 //compare Computer and Player result
 //store and add score
 function whoWin(){
-    //round++;
+    round++;
     if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
     (playerSelection === 'scissors' && computerSelection === 'paper')){
@@ -89,26 +89,11 @@ function whoWin(){
     gameLog();
 }
 
-//calcualte total score
-/*function totalScore(){
-    console.log(playerScore, computerScore);
-    if (playerScore>computerScore){
-        console.log("Player Wins");
-    }
-    else if (playerScore<computerScore){
-        console.log("You Lost. Try harder next time");
-    }
-    else if (playerScore==computerScore){
-        console.log("Tie");
-    }
-}*/
-
 //start each round
 function playRound(){
     computerPlay();
     //playerChoice();
     whoWin();
-    totalScore();
 }
 
 
